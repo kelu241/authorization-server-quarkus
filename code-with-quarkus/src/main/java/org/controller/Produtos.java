@@ -7,7 +7,6 @@ import io.quarkus.oidc.AccessTokenCredential;
 import io.quarkus.oidc.IdToken;
 import io.quarkus.security.Authenticated;
 import io.quarkus.security.identity.SecurityIdentity;
-import io.smallrye.jwt.auth.principal.JWTParser;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

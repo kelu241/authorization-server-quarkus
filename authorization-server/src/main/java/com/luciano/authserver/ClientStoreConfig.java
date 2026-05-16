@@ -25,11 +25,11 @@ public class ClientStoreConfig {
         .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
         .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
         .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-        .redirectUri("http://172.26.205.228:8080/home")
+        .redirectUri("http://172.23.121.250:8080/home")
         .scope(OidcScopes.OPENID)
         .scope(OidcScopes.PROFILE)
         .clientSettings(ClientSettings.builder()
-            .requireAuthorizationConsent(false).build())
+            .requireAuthorizationConsent(true).build())
         .build();
 
     return new InMemoryRegisteredClientRepository(registeredClient);

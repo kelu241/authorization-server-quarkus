@@ -70,11 +70,12 @@ public class SecurityFilterConfig {
 
     return http.build();
   }
-//tudo ok na terra
+
+  // tudo ok na terra
   @Bean
-CorsConfigurationSource corsConfigurationSource() {
+  CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration config = new CorsConfiguration();
-    config.setAllowedOrigins(List.of("http://172.26.205.228:8080")); // origem do Quarkus
+    config.setAllowedOrigins(List.of("http://172.23.121.250:8080")); // origem do Quarkus
     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
     config.setAllowedHeaders(List.of("*"));
     config.setAllowCredentials(true);
@@ -82,6 +83,6 @@ CorsConfigurationSource corsConfigurationSource() {
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", config);
     return source;
-}
+  }
 
 }
