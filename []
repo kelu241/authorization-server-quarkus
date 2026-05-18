@@ -30,7 +30,7 @@ public class Produtos {
 
   @Inject
   @RestClient
-  ResourceServerClient resourceServerClient;
+  ResourceServerClient2 resourceServerClient2;
 
   @GET
   public Response analise() {
@@ -59,10 +59,10 @@ public class Produtos {
   }
 
   @GET
-  @Path("resource")
+  @Path("segundo-resource")
   public Response callResourceServer() {
     String token = accessTokenCredential.getToken();
-    String body = resourceServerClient.getProdutos("Bearer " + token);
+    String body = resourceServerClient2.getProdutos("Bearer " + token);
 
     Map<String, Object> payload = new HashMap<>();
     payload.put("resource_body", body);

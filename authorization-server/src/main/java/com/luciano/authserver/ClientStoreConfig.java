@@ -25,14 +25,29 @@ public class ClientStoreConfig {
         .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
         .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
         .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-        .redirectUri("http://172.23.121.250:8080/home")
+        .redirectUri("http://172.29.237.100:8080/home")
         .scope(OidcScopes.OPENID)
         .scope(OidcScopes.PROFILE)
         .clientSettings(ClientSettings.builder()
             .requireAuthorizationConsent(true).build())
         .build();
 
-    return new InMemoryRegisteredClientRepository(registeredClient);
+    RegisteredClient registeredClient2 = RegisteredClient.withId(UUID.randomUUID().toString())
+        .clientId("client-server2")
+        .clientSecret("{noop}secret2")
+        .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+        .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+        .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+        .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+        .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+        .redirectUri("http://172.29.237.100:8081/home")
+        .scope(OidcScopes.OPENID)
+        .scope(OidcScopes.PROFILE)
+        .clientSettings(ClientSettings.builder()
+            .requireAuthorizationConsent(true).build())
+        .build();
+
+    return new InMemoryRegisteredClientRepository(registeredClient, registeredClient2);
   }
 
 }

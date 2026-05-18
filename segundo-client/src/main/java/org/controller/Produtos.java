@@ -9,6 +9,7 @@ import io.quarkus.security.Authenticated;
 import io.quarkus.security.identity.SecurityIdentity;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.jwt.JsonWebToken;
@@ -30,7 +31,7 @@ public class Produtos {
 
   @Inject
   @RestClient
-  ResourceServerClient resourceServerClient;
+  ResourceServerClient2 resourceServerClient2;
 
   @GET
   public Response analise() {
@@ -59,10 +60,10 @@ public class Produtos {
   }
 
   @GET
-  @Path("resource")
+  @Path("segundo-resource")
   public Response callResourceServer() {
     String token = accessTokenCredential.getToken();
-    String body = resourceServerClient.getProdutos("Bearer " + token);
+    String body = resourceServerClient2.getProdutos("Bearer " + token);
 
     Map<String, Object> payload = new HashMap<>();
     payload.put("resource_body", body);

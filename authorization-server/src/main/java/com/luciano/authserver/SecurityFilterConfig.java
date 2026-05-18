@@ -75,7 +75,7 @@ public class SecurityFilterConfig {
   @Bean
   CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration config = new CorsConfiguration();
-    config.setAllowedOrigins(List.of("http://172.23.121.250:8080")); // origem do Quarkus
+    config.setAllowedOrigins(List.of("http://172.29.237.100:8080", "http://172.29.237.100:8081")); // origem do Quarkus
     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
     config.setAllowedHeaders(List.of("*"));
     config.setAllowCredentials(true);
