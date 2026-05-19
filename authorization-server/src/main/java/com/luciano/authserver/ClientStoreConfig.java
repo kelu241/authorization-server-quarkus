@@ -47,7 +47,22 @@ public class ClientStoreConfig {
             .requireAuthorizationConsent(true).build())
         .build();
 
-    return new InMemoryRegisteredClientRepository(registeredClient, registeredClient2);
+    RegisteredClient registeredClient3 = RegisteredClient.withId(UUID.randomUUID().toString())
+        .clientId("client-server-oidc")
+        .clientSecret("{noop}secret3")
+        .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+        .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+        .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+        .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+        .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+        .redirectUri("http://172.29.237.100:8082/login/oauth2/code/client-server-oidc")
+        .scope(OidcScopes.OPENID)
+        .scope(OidcScopes.PROFILE)
+        .clientSettings(ClientSettings.builder()
+            .requireAuthorizationConsent(true).build())
+        .build();
+
+    return new InMemoryRegisteredClientRepository(registeredClient, registeredClient2, registeredClient3);
   }
 
 }

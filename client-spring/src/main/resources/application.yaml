@@ -1,0 +1,18 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          client-server-oidc:
+            provider: spring
+            client-id: client-server-oidc
+            client-secret: secret3
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://172.29.237.100:8082/login/oauth2/code/client-server-oidc"
+            scope: openid, profile
+            client-name: client-server-oidc
+        provider:
+          spring:
+            issuer-uri: http://172.29.237.100:9000
+server:
+  port: 8082
